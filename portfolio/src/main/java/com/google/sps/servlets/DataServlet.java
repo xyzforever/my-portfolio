@@ -42,20 +42,17 @@ public class DataServlet extends HttpServlet {
 
     List<String> comments = new ArrayList<>();
     for (Entity entity : results.asIterable()) {
-      String comment = (String) entity.getProperty("content");
-      comments.add(comment);
+      comments.add((String) entity.getProperty("content"));
     }
 
-    Gson gson = new Gson();
-
     response.setContentType("application/json;");
-    response.getWriter().println(gson.toJson(comments));
+    response.getWriter().println(new Gson().toJson(comments));
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String content = request.getParameter("comment");
-    long timestamp = System.currentTimeMillis();
+    final String content = request.getParameter("comment");
+    final long timestamp = System.currentTimeMillis();
 
     if (content.length() == 0) {
       response.sendError(HttpServletResponse.SC_FORBIDDEN, "Empty Comment Content!");

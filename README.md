@@ -1,3 +1,3 @@
 # Google Software Product Sprint
 
-his repo contains RWang's portfolio and SPS projects.
+This repo contains RWang's portfolio and SPS projects.
