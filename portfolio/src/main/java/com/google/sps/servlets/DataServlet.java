@@ -21,7 +21,6 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.gson.Gson;
-import com.google.sps.data.Task;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,13 +57,17 @@ public class DataServlet extends HttpServlet {
     String content = request.getParameter("comment");
     long timestamp = System.currentTimeMillis();
 
-    Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("content", content);
-    commentEntity.setProperty("timestamp", timestamp);
+    if (content.length() == 0) {
+      response.sendError(HttpServletResponse.SC_FORBIDDEN, "Empty Comment Content!");
+    } else {
+      Entity commentEntity = new Entity("Comment");
+      commentEntity.setProperty("content", content);
+      commentEntity.setProperty("timestamp", timestamp);
 
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
+      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      datastore.put(commentEntity);
 
-    response.sendRedirect("/index.html");
+      response.sendRedirect("/index.html");
+    }
   }
 }
