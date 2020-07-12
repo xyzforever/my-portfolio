@@ -1,18 +1,195 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="index">
+    <v-app>
+      <div class="layout row wrap">
+        <div class="flex text-xs-center xs4 sm3 md3 lg3 mx-auto">
+          <v-card class="mx-auto">
+            <v-img max-width="300" class="mx-auto" src="images/myself.png">
+            </v-img>
+            <v-card-title>Rui Wang</v-card-title>
+            <v-card-subtitle>CS undergraduate @ FDU</v-card-subtitle>
+
+            <v-card-text class="text--primary">
+              <div>
+                <v-icon left>mdi-map-marker</v-icon>
+                Shanghai, China
+              </div>
+              <div>
+                <v-icon left>mdi-git</v-icon>
+                <a href="https://github.com/xyzforever">Github</a>
+              </div>
+              <div>
+                <v-icon left>mdi-email</v-icon>
+                <a href="mailto:abothird19@gmail.com">Email</a>
+              </div>
+            </v-card-text>
+
+          </v-card>
+
+        </div>
+
+        <div class="flex features xs16 offset-xs1 sm8 offset-md0 md8 lg8 mx-auto">
+          <v-card>
+            <v-tabs>
+              <v-tab>
+                Introduction
+              </v-tab>
+              <v-tab>
+                Project
+              </v-tab>
+              <v-tab>
+                Album
+              </v-tab>
+
+              <v-tab-item>
+                <v-card flat>
+                  <v-card-text>
+                    <h3 class="text--primary"> About Me </h3>
+                    <br />
+                    <p class="text--primary">
+                      I am currently a third-year undergraduate student (expected to graduate at June 2021) majoring in
+                      Computer Science in Fudan University.
+                      <br />
+                      My research interests include Computer Vision and Artificial Intelligence,
+                      especially in Video Understanding, Unsupervised Learning, Few-shot Learning and some vision
+                      applications.
+                    </p>
+                    <v-col></v-col>
+                    <h3 class="text--primary"> Interests </h3>
+                    <br />
+                    <p class="text--primary">
+                      I love Table Tennis and I’m also a big fan of Long Ma, the captain of the Chinese National Table
+                      Tennis Men's Team.
+                      <br />
+                      In the past 3 years, I participated in the competition on behalf of my department.
+                      <v-col></v-col>
+                      <v-img max-width="300" src="images/tabletennis.jpg">
+                      </v-img>
+                    </p>
+
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+              <v-tab-item>
+                <v-card flat>
+                  <v-card-text>
+
+                    <h3 class="text--primary"> YouTube-8M Video Understanding Challenge </h3>
+                    <br />
+                    <p class="text--primary">
+                      Aimed to temporally localize the entities in the videos.
+                      Used various pooling methods to effectively aggregate the feature frames of a video.
+                      Took advantage of weak supervision information when training the models.
+                      <br />
+                      Won the Second place at the 3rd YouTube-8M Video Understanding Challenge of ICCV’19 Workshop.
+                    </p>
+                    <v-img max-width="300" src="images/youtube8m.png">
+                    </v-img>
+
+                    <v-col></v-col>
+
+                    <h3 class="text--primary"> Deepfakes Detection </h3>
+                    <br />
+                    <p class="text--primary">
+                      Aimed to identify realistic AI-generated videos where people's faces have been replaced with fake
+                      faces by Deepfake techniques.
+                      Used these well-trained feature extractors and advanced pooling methods to build video
+                      classification models, which could identify fake videos.
+                      <br />
+                    </p>
+
+                    <v-col></v-col>
+
+                    <h3 class="text--primary"> Learn to Write Like You with a Few Examples </h3>
+                    <br />
+                    <p class="text--primary">
+                      Student project, Google Machine Learning Winter Camp 2020.
+                      <br />
+                      The main goal of this project is to learn to write Chinese characters like you with only a few
+                      examples,
+                      which means users can create their own fonts with a small amount of handwriting Chinese
+                      characters. 
+                      This project presents a novel GAN framework, based on pixel2pixel algorithm and
+                      utilizing the transfer learning idea to generate new style without retraining.
+                      <br />
+                      <a href="https://github.com/tonysy/FewShot_ChineseCharacter_GAN"> Code is Here. </a>
+                      <v-img max-width="600" src="images/mlcamp.png">
+                      </v-img>
+                    </p>
+
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+              <v-tab-item>
+                <v-row>
+                  <v-col>
+                    <v-card>
+                      <v-container fluid>
+                        <v-row>
+                          <v-col v-for="n in 9" :key="n" class="d-flex child-flex" cols="4">
+                            <v-card flat tile class="d-flex">
+                              <v-img :src="`images/img${n}.jpg`" aspect-ratio="1" class="grey lighten-2">
+                                <template v-slot:placeholder>
+                                  <v-row class="fill-height ma-0" align="center" justify="center">
+                                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                                  </v-row>
+                                </template>
+                              </v-img>
+                            </v-card>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-tab-item>
+            </v-tabs>
+          </v-card>
+          <v-col></v-col>
+          <v-card outlined>
+            <v-col></v-col>
+            <v-form method="post" action="/data">
+              <v-textarea name="comment" label="Add a comment..." outlined color="blue" height="50"
+                          v-model="comment_content">
+              </v-textarea>
+              <v-btn type="submit">Add Comment</v-btn>
+            </v-form>
+            <v-col></v-col>
+          </v-card>
+          <v-col></v-col>
+          <v-card outlined>
+            <v-card-text>
+              <h3>Latest Comments</h3>
+            </v-card-text>
+            <v-card v-for="(content, idx) in comments" :key="idx">
+              <v-card-text>
+                {{ content }}
+              </v-card-text>
+            </v-card>
+
+          </v-card>
+        </div>
+      </div>
+    </v-app>
+  </div>
+
+  <script type='text/javascript' src='script.js' charset="UTF-8"></script>
+</body>
+
 </html>
