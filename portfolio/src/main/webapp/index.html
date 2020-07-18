@@ -164,10 +164,14 @@
           <v-col></v-col>
           <v-card outlined>
             <v-col></v-col>
-            <v-form method="post" action="/data">
+            <v-form method="post" name="comment-form" enctype="multipart/form-data"
+                    class="hidden" v-bind:action="upload_url">
               <v-textarea name="comment" label="Add a comment..." outlined color="blue" height="50"
                           v-model="comment_content">
               </v-textarea>
+              <v-file-input accept="image/png, image/jpeg, image/bmp" placeholder="Pick an image"
+                            prepend-icon="mdi-camera" name="image" label="Image">
+              </v-file-input>
               <v-btn type="submit">Add Comment</v-btn>
             </v-form>
             <v-col></v-col>
@@ -177,12 +181,13 @@
             <v-card-text>
               <h3>Latest Comments</h3>
             </v-card-text>
-            <v-card v-for="(content, idx) in comments" :key="idx">
+            <v-card v-for="(comment, idx) in comments" :key="idx">
               <v-card-text>
-                {{ content }}
+                {{ comment.content }}
               </v-card-text>
+              <v-img max-height="200" max-width="200" v-bind:src="comment.image_url">
+              </v-img>
             </v-card>
-
           </v-card>
         </div>
       </div>

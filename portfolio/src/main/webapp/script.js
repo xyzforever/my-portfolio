@@ -19,10 +19,14 @@ new Vue({
   data: {
     comments: [],
     comment_content: "",
+    upload_url: "",
   },
   mounted() {
     fetch('/data').then(response => response.json()).then((comments) => {
       this.comments = comments;
+    });
+    fetch('/blobstore-upload-url').then(response => response.text()).then((url) => {
+        this.upload_url = url;
     });
   },
 
