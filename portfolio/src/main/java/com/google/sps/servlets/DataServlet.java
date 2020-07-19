@@ -90,7 +90,7 @@ public class DataServlet extends HttpServlet {
     List<BlobKey> blobKeys = blobs.get(formInputElementName);
 
     // User submitted form without selecting a file, so we can't get a URL. (dev server)
-    if (blobKeys == null || blobKeys.isEmpty()) {
+    if (blobKeys == null || blobKeys.size() != 1) {
       return null;
     }
 
@@ -111,7 +111,7 @@ public class DataServlet extends HttpServlet {
 
     // GCS's localhost preview is not actually on localhost,
     // so make the URL relative to the current domain.
-    if(url.startsWith("http://localhost:8080/")){
+    if (url.startsWith("http://localhost:8080/")) {
       url = url.replace("http://localhost:8080/", "/");
     }
     return url;

@@ -26,7 +26,7 @@ new Vue({
       this.comments = comments;
     });
     fetch('/blobstore-upload-url').then(response => response.text()).then((url) => {
-        this.upload_url = url;
+      this.upload_url = url;
     });
   },
 
